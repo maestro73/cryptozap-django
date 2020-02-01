@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">This is the liquidity monitor page <img src="{% static 'lightening.png' %}" height="32" /></h1>
+      
+      <p class="lead text-muted">The current liquidity for FTX exchange is below. These are the maximum order sizes available for each market that will incur no more than 0.2% slippage:</p>
+   
+      <br />
+
+        {% for l in liquidity %}
+
+        <br />
+        {{ l }}
+
+        <br />
+
+        {% endfor %}
+
+            </div>
+        </section>
+  
+
+
+
+
+{% endblock %}
+
