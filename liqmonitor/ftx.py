@@ -3,15 +3,15 @@ from typing import Optional, Dict, Any, List
 
 from requests import Request, Session, Response
 import hmac
-
+from . import api_keys
 
 class FtxClient:
     _ENDPOINT = 'https://ftx.com/api/'
 
     def __init__(self) -> None:
         self._session = Session()
-        self._api_key = 'PXwn5GOCevzxa60anjdG3hSfCSiki06i1v6BIyr1' # TODO: Place your API key here
-        self._api_secret = '_UPzvv1zC074APUTYWRKBm7C8MEpD2FGQgSuyEty' # TODO: Place your API secret here
+        self._api_key = api_keys.api_key # TODO: Place your API key here
+        self._api_secret = api_keys.api_secret # TODO: Place your API secret here
         self._subaccount_name = 'Battle Royale'  # TODO: If using a subaccount, put its name here as a string
 
     def _get(self, path: str, params: Optional[Dict[str, Any]] = None) -> Any:
