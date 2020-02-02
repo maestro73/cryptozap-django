@@ -7,12 +7,6 @@ class Job(models.Model):
 
 class Scan(models.Model):
 
-    
-    
-
-
-  
-
     def print_hello():
 
         return "hello there pirate"

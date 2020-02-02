@@ -9,7 +9,7 @@ def home(request):
     
 
     #hello = Liquidity_scan.print_hello()
-    balance = Liquidity_scan.print_balance()
+
     #liquidity = Liquidity_scan.get_liquidity()
     
   
