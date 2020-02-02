@@ -31,18 +31,18 @@ class FtxClient:
         response = self._session.send(request.prepare())
         return self._process_response(response)
 
-    def _sign_request(self, request: Request) -> None:
-        ts = int(time.time() * 1000)
-        prepared = request.prepare()
-        signature_payload = f'{ts}{prepared.method}{prepared.path_url}'.encode()
-        if prepared.body:
-            signature_payload += prepared.body
-        signature = hmac.new(self._api_secret.encode(), signature_payload, 'sha256').hexdigest()
-        request.headers['FTX-KEY'] = self._api_key
-        request.headers['FTX-SIGN'] = signature
-        request.headers['FTX-TS'] = str(ts)
-        if self._subaccount_name:
-            request.headers['FTX-SUBACCOUNT'] = self._subaccount_name
+    #def _sign_request(self, request: Request) -> None:
+     #   ts = int(time.time() * 1000)
+      #  prepared = request.prepare()
+       # if prepared.body:
+        #    signature_payload += prepared.body
+       ## signature_payload = f'{ts}{prepared.method}{prepared.path_url}'.encode()
+        #signature = hmac.new(self._api_secret.encode(), signature_payload, 'sha256').hexdigest()
+        #request.headers['FTX-KEY'] = self._api_key
+        #request.headers['FTX-SIGN'] = signature
+        #request.headers['FTX-TS'] = str(ts)
+        #if self._subaccount_name:
+        #    request.headers['FTX-SUBACCOUNT'] = self._subaccount_name
 
     def _process_response(self, response: Response) -> Any:
         try:
