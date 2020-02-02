@@ -1,6 +1,5 @@
 from django.db import models
 
-from . import liquidity_monitor
 # Create your models here.
 
 class Liquidity_scan(models.Model):
