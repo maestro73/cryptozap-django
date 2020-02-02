@@ -61,17 +61,17 @@ class FtxClient:
     def list_markets(self) -> List[dict]:
         return self._get('markets')
 
-    def get_orderbook(self, market: str) -> dict:
-        return self._get(f'markets/{market}/orderbook', {'depth': 100})
+    #def get_orderbook(self, market: str) -> dict:
+    #    return self._get(f'markets/{market}/orderbook', {'depth': 100})
 
-    def get_trades(self, market: str) -> dict:
-        return self._get(f'markets/{market}/trades')
+    #def get_trades(self, market: str) -> dict:
+    #    return self._get(f'markets/{market}/trades')
 
-    def get_account_info(self) -> dict:
-        return self._get(f'account')
+    #def get_account_info(self) -> dict:
+    #    return self._get(f'account')
 
-    def get_open_orders(self) -> List[dict]:
-        return self._get(f'orders')
+    #def get_open_orders(self) -> List[dict]:
+    #    return self._get(f'orders')
 
     def place_order(self, market: str, side: str, price: float, size: float,
                     ioc: bool = False, post_only: bool = False) -> dict:
@@ -82,26 +82,26 @@ class FtxClient:
                                      'ioc': ioc,
                                      'postOnly': post_only})
 
-    def cancel_order(self, order_id: str) -> dict:
-        return self._delete(f'orders/{order_id}')
+    #def cancel_order(self, order_id: str) -> dict:
+    #    return self._delete(f'orders/{order_id}')
 
-    def get_fills(self) -> List[dict]:
-        return self._get(f'fills')
+    #def get_fills(self) -> List[dict]:
+    #    return self._get(f'fills')
 
     def get_balances(self) -> List[dict]:
         return self._get('wallet/balances')
 
-    def get_deposit_address(self, ticker: str) -> dict:
-        return self._get(f'wallet/deposit_address/{ticker}')
+    #def get_deposit_address(self, ticker: str) -> dict:
+    #    return self._get(f'wallet/deposit_address/{ticker}')
     
-    def get_hist_futures(self, future_name: str, resolution: str) -> dict:
-        return self._get(f'futures/{future_name}/mark_candles?resolution={resolution}')
+   # def get_hist_futures(self, future_name: str, resolution: str) -> dict:
+   #     return self._get(f'futures/{future_name}/mark_candles?resolution={resolution}')
     
-    def get_positions(self) -> dict:
-        return self._get(f'positions')
+    #def get_positions(self) -> dict:
+    #    return self._get(f'positions')
     
-    def get_hist_markets(self, market_name: str, resolution: str) -> dict:
-        return [market_name, self._get(f'markets/{market_name}/candles?resolution={resolution}')]
+    #def get_hist_markets(self, market_name: str, resolution: str) -> dict:
+    #    return [market_name, self._get(f'markets/{market_name}/candles?resolution={resolution}')]
     
     
     
