@@ -14,19 +14,54 @@
     
     <p class="lead text-muted">Live market scanners for crypto exchanges.</p>
     <p>We are in Beta!</p>
-    <p>Please note the buttons below make API calls to FTX crypto exchange, and will take approximately 20 seconds to load!</p>
+    <p>Easily compare liquidity and orderbooks across exchanges.</p>
     
-   
+   <p>Please note, the buttons below will generate API calls to their respective exchanges and may take approx 20 seconds to load the results. Please be patient!</p>
     <p>
-      <a href="{% url 'liqhome' %}" class="btn btn-primary my-2">Check Liquidity at FTX</a>
+
+      <form action="{% url 'bitmex' %}">
+        <input type="text" name="slippage" placeholder='0.1 %'>
+        <br />
+        <input type="submit" value="Check mex liquidity" />
+      </form>
+
+     
     </p>
 
-    <p>More exchanges coming soon! </p>
+    <p>More features and exchanges coming soon... </p>
     
   </div>
 </section>
 
-<div>Test text</div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_2da5a"></div>
+  <div class="tradingview-widget-copyright"><a href="https://uk.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">Chart</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 980,
+  "height": 610,
+  "symbol": "BITMEX:XBTUSD",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Light",
+  "style": "1",
+  "locale": "uk",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_2da5a"
+}
+  );
+
+
+  </script>
+
+</div>
+<!-- TradingView Widget END -->
+
 
 
 
