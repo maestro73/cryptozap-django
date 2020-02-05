@@ -20,17 +20,23 @@ def ftx(request):
 def bitmex(request):
 
 
-    best_buy_price = Bitmex.show_best_buy_price()
-
+    best_buy_price= Bitmex.show_best_buy_price()
     best_sell_price = Bitmex.show_best_sell_price()
 
+    best_buy_price_btc = best_buy_price[0]
+    best_sell_price_btc = best_sell_price[0]
+
+    best_buy_price_eth = best_buy_price[1]
+    best_sell_price_eth  = best_sell_price[1]
+
+    best_buy_price_ltc = best_buy_price[2]
+    best_sell_price_ltc = best_sell_price[2]
+
     if request.GET['slippage'] is '':
-        slippage = 0.1
+        slippage = 0.01
     else:
-        slippage = float(request.GET['slippage'])
+        slippage = float(request.GET['slippage']) / 100
     
-
-
 
     liquidity_to_buy = Bitmex.show_max_buy_size_for_slippage(slippage)
 
@@ -46,8 +52,16 @@ def bitmex(request):
     return render(request, 'liqmonitor/bitmex.html', {
         'btc_buy_liq': btc_buy_liq, 
         'btc_sell_liq': btc_sell_liq,
-        'best_buy': best_buy_price, 
-        'best_sell': best_sell_price,
+        'best_buy_btc': best_buy_price_btc, 
+        'best_sell_btc': best_sell_price_btc,
+        'eth_buy_liq': eth_buy_liq, 
+        'eth_sell_liq': eth_sell_liq,
+        'best_buy_eth': best_buy_price_eth, 
+        'best_sell_eth': best_sell_price_eth,
+        'ltc_buy_liq': ltc_buy_liq, 
+        'ltc_sell_liq': ltc_sell_liq,
+        'best_buy_ltc': best_buy_price_ltc, 
+        'best_sell_ltc': best_sell_price_ltc,
         'slippage': slippage,
         })
 

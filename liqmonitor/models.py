@@ -14,16 +14,9 @@ class Liquidity_scan(models.Model):
 
 class Bitmex(models.Model):
 
-    def get_liquidity():
-
-        orderbook = bitmex_tools.Orderbook('XBT', 0)
-
-        liquidity = orderbook.show_best_buy_price()
-
-        return liquidity
+   
 
     def show_best_buy_price():
-
 
         orderbook = bitmex_tools.Orderbook('XBT', 0)
 
@@ -35,12 +28,12 @@ class Bitmex(models.Model):
 
         best_buy_price_eth = orderbook_eth.show_best_buy_price()
 
-        best_buy_price_ltc = orderbook_ltc.show_best_buy_price()
+        best_buy_price_ltc = orderbook.show_best_buy_price()
 
-        return best_buy_price
+        return [best_buy_price, best_buy_price_eth, best_buy_price_ltc]
+
 
     def show_best_sell_price():
-
 
         orderbook = bitmex_tools.Orderbook('XBT', 0)
 
@@ -50,7 +43,13 @@ class Bitmex(models.Model):
 
         best_sell_price = orderbook.show_best_sell_price()
 
-        return best_sell_price
+        best_sell_price_eth = orderbook_eth.show_best_sell_price()
+
+        best_sell_price_ltc = orderbook.show_best_sell_price()
+
+
+        return [best_sell_price, best_sell_price_eth, best_sell_price_ltc]
+
 
     def show_max_buy_size_for_slippage(slippage):
 
@@ -65,7 +64,6 @@ class Bitmex(models.Model):
         max_buy_size_eth = orderbook_eth.show_max_buy_size_for_slippage(slippage)
         
         max_buy_size_ltc = orderbook_ltc.show_max_buy_size_for_slippage(slippage)
-
 
         return [max_buy_size, max_buy_size_eth, max_buy_size_ltc]
 
